@@ -1,0 +1,19 @@
+<%= form_for( @history ) do |f| %>
+
+    <p>
+
+      <%= f.label :Start_Date %>
+      <%= f.datetime_select :start, :required => true, :order => [:year, :month, :day, :hour, :minute],
+                            :start_year => 2017, :end_year =>2017%>
+      <%= f.label :End_Date %>
+      <%= f.datetime_select :end, :required => true, :order => [:year, :month, :day, :hour, :minute],
+                            :start_year => 2017, :end_year =>2017%>
+
+
+    </p>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+
+<% end %>

@@ -1,0 +1,13 @@
+                     List of relations
+ Schema |         Name         |   Type   |     Owner      
+--------+----------------------+----------+----------------
+ public | ar_internal_metadata | table    | gasqjhoqchksut
+ public | cars                 | table    | gasqjhoqchksut
+ public | cars_id_seq          | sequence | gasqjhoqchksut
+ public | histories            | table    | gasqjhoqchksut
+ public | histories_id_seq     | sequence | gasqjhoqchksut
+ public | schema_migrations    | table    | gasqjhoqchksut
+ public | users                | table    | gasqjhoqchksut
+ public | users_id_seq         | sequence | gasqjhoqchksut
+(8 rows)
+

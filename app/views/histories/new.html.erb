@@ -1,0 +1,21 @@
+<h1>Date Selection</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+    <%= form_for(@history) do |f| %>
+
+        <p>
+          <%= f.label :Start_Date %>
+          <%= f.datetime_select :start, :required => true, :order => [:year, :month, :day, :hour, :minute],
+                                :start_year => 2017, :end_year =>2017%>
+          <%= f.label :End_Date %>
+          <%= f.datetime_select :end, :required => true, :order => [:year, :month, :day, :hour, :minute],
+                                :start_year => 2017, :end_year =>2017%>
+
+          <%= f.submit "Select Date", class: "btn btn-primary"%>
+        </p>
+        </div>
+
+    <% end %>
+  </div>
+

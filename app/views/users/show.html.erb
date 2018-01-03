@@ -1,0 +1,79 @@
+<html>
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="center jumbotron">
+  <h1>User Information</h1>
+
+    <h2 style = font-size:28px>
+      <p> The user's name:   <%= @user.name %></p>
+
+
+      <p>The user's emile address:   <%= @user.email %> </p>
+      <% if @user.role == 'user'%>
+      <p>Your's Operation Authority Level is : Customer</p>
+          <% elsif @user.role =='admin'%>
+          <p>Your's Operation Authority Level is : Admin</p>
+      <% elsif @user.role =='superad'%>
+          <p>Your's Operation Authority Level is : SuperAdmin</p>
+      <% end %>
+      <% if @user.car.any?&&@user.role!='superad'%>
+      <h2>
+        <p style = font-size:40px;color:#4c4c4c;> The User's Rental information:</p>
+        <li style = font-size:28px;color:#4c4c4c;margin-right:0px>car ID:<%=  @car.id%></li>
+        <li style = font-size:28px;color:#4c4c4c;margin-right:-132px>car Location:<%=@car.location%></li>
+        <li style = font-size:28px;color:#4c4c4c;margin-right:-134px>car Model:<%=@car.model%></li>
+        <li style = font-size:28px;color:#4c4c4c;margin-right:-114px>car Manufacturer:<%=@car.manufacturer%></li>
+        <li style = font-size:28px;color:#4c4c4c;margin-right:-105px>car Style:<%=@car.style%></li>
+        <% if @car.status ==  'checkout'%>
+            <li style = font-size:28px;color:#4c4c4c;margin-right:-105px><%= link_to "Return Now!", :controller=>'cars',:action=>'return',cars_id:@car.id,user_id:@user.id %></li>
+        <%end%>
+        <% if @car.status == 'reserved'%>
+            <li style = font-size:28px;color:#4c4c4c;margin-right:-105px><%= link_to 'Pick up!', :controller=>'cars',:action=>'checkout',cars_id:@car.id,user_id:@user.id %></li>
+        <%end%>
+      </h2>
+      <%end%>
+      <h2>
+      <% if @user.car.empty?%>
+      <p style = font-size:40px;color:#4c4c4c ;>You didn't rent a car!</p></h2>
+      <%end%>
+    </h2>
+  </div>
+  <div>
+    <nav>
+      <% if @current_user==@user%>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Home", '/static_pages/home' %></li>
+        <li><%= link_to "Edit profile", edit_user_path %></li>
+        <% if @user.role =='admin'||@user.role=='superad'%>
+            <li><%= link_to "Users", '/users' %></li>
+            <li><%= link_to "Log out", '/sessions/destroy', method: :delete %></li>
+            <% else %>
+            <li><%= link_to "Log out", '/sessions/destroy', method: :delete %></li>
+        <% end %>
+      </ul>
+          <% else %>
+          <a style = margin-right:650px><%= link_to "View This User's Rental History", histories_path(:user_id => @user.id), class: "btn btn-lg btn-default" %></a>
+          <a style = margin-right:60px><%= link_to "Back To User Index", '/users', class: "btn btn-lg btn-default" %></a>
+      <% end %>
+    </nav>
+  </div>
+
+  <div>
+    <nav>
+    <li>
+      <ul >
+        <% if @current_user==@user %>
+        <%= link_to "Car Rental", '/cars', class: "btn btn-lg btn-default" %>
+        <a style = margin-right:60px><%= link_to "Search Cars", '/cars/search', class: "btn btn-lg btn-default" %></a>
+        <a style = margin-right:60px><%= link_to "Rental History",histories_path(:user_id => @user.id),class: "btn btn-lg btn-default" %></a>
+      <% end %>
+            </ul>
+    </li>
+    </nav>
+  </div>
+
+</header>
+
+
+
+</html>

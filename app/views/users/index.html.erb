@@ -1,0 +1,82 @@
+<style>
+
+</style>
+<h1>All users</h1>
+<body>
+<ul class="users">
+
+
+
+
+
+    <table class="table table-striped table-bordered">
+      <thead>
+      <tr>
+        <th>Operation Authority Level</th>
+        <th>User ID</th>
+        <th>User Name</th>
+        <th colspan="3"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @users.each do |user| %>
+          <% if user.role =='admin' %>
+              <tr>
+                <td> <%=  "Admin" %></td>
+                <td><%= user.id %></td>
+                <td><%= link_to user.name, user %></td>
+                <td><%= link_to 'Edit', edit_user_path(user) %></td>
+                <% if user.noc == 0%>
+                <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    <% end %>
+
+              </tr>
+
+
+          <% elsif user.role =='user'%>
+
+                <tr>
+                <td><%=  "Customer" %></td>
+                <% if user.noc==0%>
+                   <td> <%= user.id %></td>
+                      <td><%= link_to user.name, user %></td>
+                      <td><%= link_to 'Edit', edit_user_path(user) %></td>
+                      <td><%= link_to 'Check Car for this user', :controller=>'cars',:action=>'help_rent',user_id:user.id%></td>
+                      <td> <%= link_to 'Reserve Car for this user', :controller=>'cars',:action=>'help_reserve',user_id:user.id%></td>
+
+                      <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+                <% else %>
+                      <td><%= user.id %></td>
+                      <td><%= link_to user.name, user %></td>
+                      <td><%= link_to 'Edit', edit_user_path(user) %></td>
+                      <td><%= link_to 'Return Car for this user', :controller=>'cars',:action=>'help_return',user_id:user.id%></td>
+
+                  <% end %>
+                </tr>
+
+
+          <% elsif user.role == 'superad'%>
+
+                <tr>
+                  <td><%=  "SuperAdmin" %></td>
+                  <td> <%= user.id %></td>
+                  <td><%= link_to user.name, user %></td>
+                <% if@current_user.role=='superad' %>
+                      <td> <%= link_to 'Edit', edit_user_path(user) %></td>
+                <% end %>
+
+              </tr>
+
+          <%end%>
+
+
+      <% end %>
+      </tbody>
+      </table>
+      <div>
+        <%= link_to "Create User", '/users/new' %>
+        <%= link_to "Back", @current_user %>
+      </div>>
+      </ul>
+</body>

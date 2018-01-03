@@ -1,0 +1,43 @@
+<h1>Search Cars</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+    <%= form_for(:session, url:'/cars/result') do |f| %>
+
+        <%= f.label :locations %>
+        <%= f.text_field :location,class: 'form-control'  %>
+        <p>
+
+        <p>
+          <%= f.label :model%>
+          <%= f.text_field :model,class: 'form-control'  %>
+        <p>
+
+        <p>
+          <%= f.label :manufacturer %>
+          <%= f.text_field :manufacturer,class: 'form-control'  %>
+        <p>
+
+        <p>
+          <%= f.label :style %>
+          <%= f.select :style,  options_for_select([['Sedan','Sedan'],['Coupe','Coupe'],['SUV','SUV'],['','']]),class: 'form-control'  %>
+        <p>
+
+        <p>
+          <%= f.label :status %>
+          <%= f.select :status,  options_for_select([['Available','available'],['Checked_out','checkout'],['Reserved','reserved'],['','']]),class: 'form-control'  %>
+        <p>
+
+          <%= f.label :License_NO %>
+          <%= f.text_field :license_number,class: 'form-control'  %>
+        <p>
+          <%= f.label :Rental_Rate %>
+          <%= f.text_field :rental_rate,class: 'form-control'  %>
+          <p></p>
+          <%= f.submit "Search Car", class: "btn btn-primary" %>
+    <% end %>
+    <p></p>
+    <a><%= link_to 'Back To Home', current_user,class:"btn btn-info"%></a>
+  </div>
+</div>

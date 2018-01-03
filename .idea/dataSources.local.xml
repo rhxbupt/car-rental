@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="PostgreSQL - mydb1@localhost" uuid="29c4dea0-0b97-4708-93de-76411b4c6a8d">
+      <database-info product="PostgreSQL" version="9.3.18" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.1.1">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <user-name>postgres</user-name>
+      <introspection-schemas>mydb1:public</introspection-schemas>
+    </data-source>
+    <data-source name="Rails rails: development" uuid="b23ff3c1-b117-45f6-b537-7dccd2222ae8">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <first-sync>true</first-sync>
+      <user-name>rhxbupt7</user-name>
+    </data-source>
+    <data-source name="Rails rails: test" uuid="14ab8ecf-a58b-41f3-922e-43e2404aa712">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <first-sync>true</first-sync>
+      <user-name>rhxbupt7</user-name>
+    </data-source>
+    <data-source name="Rails rails: production" uuid="a5feb9fa-05f1-4848-82b8-2241b90ebadf">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <first-sync>true</first-sync>
+      <user-name>rhxbupt7</user-name>
+    </data-source>
+  </component>
+</project>

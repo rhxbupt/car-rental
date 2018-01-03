@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @car.location %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @car.model %>
+</p>
+
+<p>
+  <strong>Manufacturer:</strong>
+  <%= @car.manufacturer %>
+</p>
+
+<p>
+  <strong>Style:</strong>
+  <%= @car.style %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @car.status %>
+</p>
+
+<p>
+  <strong>License_NO:</strong>
+  <%= @car.license_number %>
+</p>
+
+<p>
+  <strong>Rental_Rate:</strong>
+  <%= @car.rental_rate %>
+</p>
+
+<%= link_to 'Back', cars_path %>
+<% if (@car.status =='available') and @user.noc==0 %>
+    <%= link_to 'Check it Out!', :controller=>'cars',:action=>'checkout',cars_id:@car.id,user_id:@user.id %>
+    <%= link_to 'Reserve it !',:controller=>'cars',:action=>'reserve',cars_id:@car.id,user_id:@user.id %>
+<% end %>
+<% if @car.status =='reserved' %>
+    <%= link_to 'Check it Out!', :controller=>'cars',:action=>'checkout',cars_id:@car.id,user_id:@user.id %>
+<%end%>

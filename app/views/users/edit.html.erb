@@ -1,0 +1,50 @@
+<h1>Update your profile</h1>
+<style>
+  select{background: transparent;
+    width: 268px;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    height: 34px;}
+</style>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user) do |f| %>
+        <%= render 'shared/error_messages' %>
+
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
+
+        <%= f.label :email %>
+        <%= f.email_field :email, class: 'form-control' %>
+        <% if @current_user==(@user) %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control' %>
+
+        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+        <% end %>
+        <% if @current_user.role=='admin'%>
+        <%= f.label :Autherity_Level %>
+        <%= f.select :role, options_for_select([['User','user'],['Admin','admin']])%>
+        <% end %>
+        <% if @current_user.role=='superad'%>
+            <%= f.label :Autherity_Level %>
+            <%= f.select :role, options_for_select([['User','user'],['Admin','admin'],['SuperAdmin','superad']])%>
+        <% end %>
+            <p></p>
+        <a style = margin-right:30px><%= f.submit "Save changes", class: "btn btn-primary" %>
+          <% if @current_user.role == 'admin'||@current_user.role=='superad'%>
+          <%=link_to "Back", users_path ,class: "btn btn-primary" %>
+             <% else %>
+              <%=link_to "Back", @current_user ,class: "btn btn-primary" %>
+              <% end %>
+
+        </a>
+    <% end %>
+
+
+  </div>
+</div>
